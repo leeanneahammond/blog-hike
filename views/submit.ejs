@@ -1,20 +1,11 @@
 <%- include('partials/header') %>
-
-<div class="container">
-    <div class="jumbotron centered">
-        <h1 class="display-3">BLOG POST</h1>
-        <p class="secret-text">Tell us your story!</p>
-
-        <form action="/submit" method="POST">
-
-            <div class="form-group">
-                <input type="text" class="form-control text-center" name="secret"
-                    placeholder="Hiking tips, trail conditions, etc.">
-            </div>
-            <button type="submit" class="btn btn-dark">Publish</button>
-        </form>
-
-
+<form class="" action="/compose" method="post">
+    <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" type="text" name="postTitle" />
+        <label>Post</label>
+        <textarea class="form-control" name="postBody" rows="4" cols="30"></textarea>
     </div>
-</div>
+    <button class="btn btn-primary" type="submit" name="button">Submit</button>
+</form>
 <%- include('partials/footer') %>
