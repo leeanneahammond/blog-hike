@@ -16,5 +16,7 @@ npm passport</br>
 
 ## Adding soon: </br>
 User will be able to upload photos on their posts </br>
-User can like other user's posts
+User can like other user's posts</br>
+Flexbox</br>
+Ability to save/edit/delete blog postings
 
