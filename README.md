@@ -13,7 +13,7 @@ Trailforks Widgets</br>
 Lodash</br>
 
 
-## User will be able to find hikes in the DMV area and click on each trail to view more information on the trail they are interested in. The user will also be able to post their own stories if they register/log in. 
+## User will be able to find hikes in the DMV area and click on each trail to view more information on the trail they are interested in. The user will also be able to post their own stories if they register/log in. Sharing on twitter is available at the bottom of the page. 
 
 ## Not working: </br>
 EDIT/DELETE ROUTES </BR>
