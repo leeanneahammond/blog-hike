@@ -3,13 +3,14 @@ html {
     min-height: 100%;
     position: relative;
     text-align: center;
-
-  
   }
   h1 {
       text-decoration: underline;
   }
-  
+
+  body {
+      width: 100%;
+  }
   .container-fluid {
       padding-top: 70px;
       padding-bottom: 70px;

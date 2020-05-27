@@ -186,6 +186,7 @@ app.get("/blog", function (req, res) {
 });
 
 
+
 app.get("/compose", function (req, res) {
   res.render("compose");
 });
@@ -203,7 +204,7 @@ app.post("/compose", function (req, res) {
   });
 });
 
-app.get("/posts/:postId", function (req, res) {
+app.get("blog/posts/:postId", function (req, res) {
 
   const requestedPostId = req.params.postId;
 
@@ -239,6 +240,7 @@ app.get("/md", function (req, res) {
 app.get("/va", function (req, res) {
   res.render("va", { vaContent: vaContent });
 });
+
 
 app.listen(3000, function () {
   console.log("Server started on port 3000");
