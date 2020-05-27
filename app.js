@@ -8,22 +8,28 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
+
+
+// Tabs
 const homeStartingContent = "";
-const aboutContent = "I'm baby godard sustainable semiotics mustache artisan shabby chic fixie farm-to-table tacos. Fixie portland art party cardigan schlitz. Poutine chambray bitters, tilde enamel pin deep v locavore small batch lomo keffiyeh edison bulb migas blog semiotics craft beer. Roof party pitchfork kogi, before they sold out cornhole trust fund echo park. Glossier man braid tofu affogato activated charcoal keytar organic semiotics selfies ugh lumbersexual. Tofu sartorial banh mi yuccie retro asymmetrical ramps semiotics bicycle rights enamel pin cornhole artisan prism brooklyn ennui. Shabby chic craft beer lyft offal echo park, snackwave glossier banjo organic gluten-free disrupt brunch meggings leggings.";
+const blogContent = "";
 const contactContent = "";
+const postContent = "";
 const dcContent = "Click trails to view more information.";
 const mdContent = "Click trails to view more information.";
 const vaContent = "Click trails to view more information.";
 
+
 const app = express();
 
-
+// Middleware
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+// Login
 app.use(session({
   secret: "Our little secret.",
   resave: false,
@@ -96,7 +102,7 @@ app.get("/submit", function (req, res) {
   if (req.isAuthenticated()) {
     res.render("submit");
   } else {
-    res.redirect("/login");
+    res.redirect("/secrets");
   }
 });
 
@@ -133,7 +139,7 @@ app.post("/register", function (req, res) {
       res.redirect("/register");
     } else {
       passport.authenticate("local")(req, res, function () {
-        res.redirect("/secrets");
+        res.redirect("/compose");
       });
     }
   });
@@ -152,13 +158,15 @@ app.post("/login", function (req, res) {
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function () {
-        res.redirect("/secrets");
+        res.redirect("/compose");
       });
     }
   });
 
 });
 
+
+// Posts
 const postSchema = {
   title: String,
   content: String
@@ -166,11 +174,11 @@ const postSchema = {
 
 const Post = mongoose.model("Post", postSchema);
 
-app.get("/", function (req, res) {
+app.get("/blog", function (req, res) {
 
   Post.find({}, function (err, posts) {
-    res.render("home", {
-      startingContent: homeStartingContent,
+    res.render("blog", {
+      blogContent: blogContent,
       posts: posts
     });
   });
@@ -190,7 +198,7 @@ app.post("/compose", function (req, res) {
 
   post.save(function (err) {
     if (!err) {
-      res.redirect("/");
+      res.redirect("/blog");
     }
   });
 });
@@ -208,12 +216,16 @@ app.get("/posts/:postId", function (req, res) {
 
 });
 
-app.get("/about", function (req, res) {
-  res.render("about", { aboutContent: aboutContent });
+app.get("/blog", function (req, res) {
+  res.render("blog", { blogContent: blogContent });
 });
 
 app.get("/contact", function (req, res) {
   res.render("contact", { contactContent });
+});
+
+app.get("/post", function (req, res) {
+  res.render("post", { postContent });
 });
 
 app.get("/dc", function (req, res) {
